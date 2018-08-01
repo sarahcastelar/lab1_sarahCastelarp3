@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#define pi 3.1415926535897
 
 
 using std::cout;
@@ -52,9 +53,48 @@ void ejercicio1(){
 		}
 
 	}
-
-
 }//fin metodo ejercicio 1. 
+
+//METODO DEL SEGUNDO EJERCICIO
+void ejercicio2(){
+	double cateto1, cateto2, hipotenusa, sumaCatetos=0,s = 0, area = 0;
+        double	hipotenusaCalculado=0, cateto1Calculado=0, cateto2Calculado=0, angulo1=0,angulo2=0, angulo3=0;
+	cout << "Ingrese dimension del primer cateto del triangulo: "<<endl;
+	cin >> cateto1;
+	cout<<"Ingrese dimension del segundo cateto del triangulo: "<<endl;
+	cin >> cateto2;
+	cout<< "Ingrese la dimension de la hipotenusa del triangulo: "<<endl;
+	cin >> hipotenusa;
+	
+	//el cuadrado de la hipotenusa es igual a la suma del cuadrado de los catetos SI ES UN TRIANGULO RECTO.
+	hipotenusaCalculado = pow(hipotenusa,2);
+	cateto1Calculado = pow(cateto1,2);
+	cateto2Calculado = pow (cateto2, 2);
+	sumaCatetos = cateto1Calculado + cateto2Calculado;
+
+	if (sumaCatetos == hipotenusaCalculado)
+		cout<<"Es un triangulo rectangulo."<<endl;
+	else
+		cout<<"No es un triangulo rectangulo."<<endl;
+	
+	//la formula de los cosenos 
+	//calcular angulo 1, osea del lado 1
+	angulo1 = asin(((cateto1Calculado*-1) + cateto2Calculado + hipotenusaCalculado)/(2*cateto2*hipotenusa));
+	angulo2 = acos(((cateto2Calculado*-1) + cateto1Calculado + hipotenusaCalculado)/(2*cateto1*hipotenusa));
+	angulo1 = (angulo1*180.0)/pi;
+	angulo2 = (angulo2*180.0)/pi;
+	angulo3 = 180-angulo1-angulo2;
+	//	angulo3 = (angulo3*180.0)/pi;
+	
+
+	s = (cateto1+cateto2+hipotenusa)/2;
+	area = sqrt (s*(s-cateto1)*(s-cateto2)*(s-hipotenusa));
+
+	cout<<"El angulo 1 del lado 1 es: "<<angulo1<<endl;
+	cout<<"El angulo 2 del lado 2 es: "<<angulo2<<endl;
+	cout<<"El angulo 3 de la hipotenusa es: "<<angulo3<<endl;
+	cout<<"El area del triangulo es: "<<area<<endl;
+}//fin metodo 2
 
 
 int main (){
@@ -68,6 +108,7 @@ int main (){
 
 			case 2:
 				//funcion que llama segundo ejercico
+				ejercicio2();
 			break;
 
 			case 3:
