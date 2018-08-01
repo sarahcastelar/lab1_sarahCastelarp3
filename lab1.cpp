@@ -137,11 +137,17 @@ void ejercicio3(){
 		int temporal = arregloDivisores[i];
 		int suma = 0;
 		suma = (n+temporal)/temporal;
-
-		if (esPrimo(suma))
+		cout<<"PROBANDO SUMA: "<<suma<<endl;
+		
+		bool resultado = esPrimo(suma);
+		cout<<"PROBANDO ESPRIMO: "<<resultado<<endl;
+		
+		if (resultado==1)
 			sumaPrimos += suma;
+		cout<<"PROBANDO SUMAPRIMOS: "<<sumaPrimos<<"EN I IGUAL A: "<<i<<endl;
 	
 	}
+	
 	cout<<"La suma de los primos segun la formula es: "<<sumaPrimos<<endl;
 }	
 
