@@ -93,9 +93,15 @@ void ejercicio2(){
 	s = (cateto1+cateto2+hipotenusa)/2;
 	area = sqrt (s*(s-cateto1)*(s-cateto2)*(s-hipotenusa));
 
-	cout<<"El angulo 1 del lado 1 es: "<<angulo1<<endl;
-	cout<<"El angulo 2 del lado 2 es: "<<angulo2<<endl;
-	cout<<"El angulo 3 de la hipotenusa es: "<<angulo3<<endl;
+	//los pasare a int los angulos porque se supone que es una aproximacion, en entero. El area no, el area si se necesitaria decimales.
+	int angulo1I, angulo2I, angulo3I;
+	angulo1I = angulo1;
+	angulo2I = angulo2;
+	angulo3I = angulo3; 
+
+	cout<<"El angulo 1 del lado 1 es: "<<angulo1I<<endl;
+	cout<<"El angulo 2 del lado 2 es: "<<angulo2I<<endl;
+	cout<<"El angulo 3 de la hipotenusa es: "<<angulo3I<<endl;
 	cout<<"El area del triangulo es: "<<area<<endl;
 }//fin metodo 2
 
