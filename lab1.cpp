@@ -96,6 +96,55 @@ void ejercicio2(){
 	cout<<"El area del triangulo es: "<<area<<endl;
 }//fin metodo 2
 
+bool esPrimo(int n){
+	bool resultado = false;
+	int c = 0;
+	for (int i = 1; i < n; i++){
+		if (n%i == 0)
+			c++;
+	}
+
+	if (c == 2)
+		resultado = true;
+
+	return resultado;
+}
+
+
+void ejercicio3(){
+	int n, contadorDivisores=0, contadorEspacio=0, sumaPrimos = 0;
+	cout<<"Ingrese numero para calcular la suma de los divisores primos: "<<endl;
+	cin >> n;
+	
+	//este for lo unico que hace es sacar la cuenta de cuantos divisores tiene el numero ingresado por el usuario.
+	for(int i = 0; i < n; i++){
+		if (n%i ==0)
+			contadorDivisores++;		
+	}
+	
+	int *[] arregloDivisores = new int [contadorDivisores];
+
+	//este for va ir guardando los divisores en el arreglo anteriormente declarado.
+	for (int i = 0; i < n; i++){
+		if (n%i == 0){
+			//que lo meta en el arreglo segun la posicion que le corresponde.
+			arregloDivisores[contadorEspacio] = i;
+			contadorEspacio++;
+		}
+	}
+
+	for (int i = 0; i < contadorDivisores; i++){
+		int temporal = arregloDivisores[i];
+		int suma = 0;
+		suma = (n+temporal)/temporal;
+
+		if (esPrimo(suma))
+			sumaPrimos += suma;
+	
+	}
+	cout<<"La suma de los primos segun la formula es: "<<sumaPrimos<<endl;
+}	
+
 
 int main (){
 	int opcion = 0;
