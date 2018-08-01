@@ -45,11 +45,13 @@ void ejercicio1(){
 			cout<<"1^3=1=1"<<endl;
 		else {
 			for (int j=0; j<i+1;j++){
-				totalCubo = pow((i+1),3.0); 
+				totalCubo = (int) pow((i+1),3.0); 
+				int totalCubo2;
+			        totalCubo2 = totalCubo; //sin decimales
 				if (j!=i)
 				  sumaNumeros += std::to_string(contador) + "+";
 				else
-				  sumaNumeros += std::to_string(contador) + "=" + std::to_string(totalCubo);									contador+=2;
+				  sumaNumeros += std::to_string(contador) + "=" + std::to_string(totalCubo2);									contador+=2;
 			}
 			cout<<sumaNumeros<<endl;
 		}
