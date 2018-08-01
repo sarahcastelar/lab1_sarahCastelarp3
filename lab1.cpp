@@ -28,6 +28,9 @@ int menu (){
 }
 
 //METODO DEL PRIMER EJERCICIO.
+//el primer for recorre los cubos de los numeros anteriores a n
+//el segundo for simplemente va guardando en strings todos los numeros siguientes impares que se suman 
+//.. para llegar al proximo cubo. 
 void ejercicio1(){
 	int n;
 	cout<<"Ingrese cantidad de cubos a calcular: "<<endl;
@@ -47,13 +50,11 @@ void ejercicio1(){
 				  sumaNumeros += std::to_string(contador) + "+";
 				else
 				  sumaNumeros += std::to_string(contador) + "=" + std::to_string(totalCubo);									contador+=2;
-
 			}
 			cout<<sumaNumeros<<endl;
 		}
-
 	}
-}//fin metodo ejercicio 1. 
+}
 
 //METODO DEL SEGUNDO EJERCICIO
 void ejercicio2(){
@@ -66,7 +67,7 @@ void ejercicio2(){
 	cout<< "Ingrese la dimension de la hipotenusa del triangulo: "<<endl;
 	cin >> hipotenusa;
 	
-	//el cuadrado de la hipotenusa es igual a la suma del cuadrado de los catetos SI ES UN TRIANGULO RECTO.
+	//si el cuadrado de la hipotenusa es igual a la suma del cuadrado de los catetos, ES UN TRIANGULO RECTO.
 	hipotenusaCalculado = pow(hipotenusa,2);
 	cateto1Calculado = pow(cateto1,2);
 	cateto2Calculado = pow (cateto2, 2);
@@ -78,13 +79,13 @@ void ejercicio2(){
 		cout<<"No es un triangulo rectangulo."<<endl;
 	
 	//la formula de los cosenos 
-	//calcular angulo 1, osea del lado 1
+	//se calcula el angulo en radianes y luego se pasa a grados
+	//todos los angulos de un triangulo suman 180 por eso el angulo 3 tiene esa formula.
 	angulo1 = asin(((cateto1Calculado*-1) + cateto2Calculado + hipotenusaCalculado)/(2*cateto2*hipotenusa));
 	angulo2 = acos(((cateto2Calculado*-1) + cateto1Calculado + hipotenusaCalculado)/(2*cateto1*hipotenusa));
 	angulo1 = (angulo1*180.0)/pi;
 	angulo2 = (angulo2*180.0)/pi;
 	angulo3 = 180-angulo1-angulo2;
-	//	angulo3 = (angulo3*180.0)/pi;
 	
 
 	s = (cateto1+cateto2+hipotenusa)/2;
@@ -95,20 +96,6 @@ void ejercicio2(){
 	cout<<"El angulo 3 de la hipotenusa es: "<<angulo3<<endl;
 	cout<<"El area del triangulo es: "<<area<<endl;
 }//fin metodo 2
-
-bool esPrimo(int n){
-	bool resultado = false;
-	int c = 0;
-	for (int i = 1; i < n; i++){
-		if (n%i == 0)
-			c++;
-	}
-
-	if (c == 2)
-		resultado = true;
-
-	return resultado;
-}
 
 
 void ejercicio3(){
@@ -135,19 +122,18 @@ void ejercicio3(){
 
 	for (int i = 0; i < contadorDivisores; i++){
 		int temporal = arregloDivisores[i];
-		int suma = 0;
+		int suma = 0, contador=0;
 		suma = (n+temporal)/temporal;
-		cout<<"PROBANDO SUMA: "<<suma<<endl;
+
+		for(int i = 1; i < suma+1; i++){
+			if (suma%i == 0){
+				contador++;
+			}
+		}
 		
-		bool resultado = esPrimo(suma);
-		cout<<"PROBANDO ESPRIMO: "<<resultado<<endl;
-		
-		if (resultado==1)
+		if (contador==2)
 			sumaPrimos += suma;
-		cout<<"PROBANDO SUMAPRIMOS: "<<sumaPrimos<<"EN I IGUAL A: "<<i<<endl;
-	
 	}
-	
 	cout<<"La suma de los primos segun la formula es: "<<sumaPrimos<<endl;
 }	
 
@@ -157,24 +143,18 @@ int main (){
 	while (opcion != 4){
 		switch (opcion = menu()){
 			case 1:
-				//funcion que llama primer ejercicio
 				ejercicio1();
 			break;
 
 			case 2:
-				//funcion que llama segundo ejercico
 				ejercicio2();
 			break;
 
 			case 3:
-				//funcion que llama tercer ejercicio
 				ejercicio3();
 			break;
 
-		}//end switch
-
-	 }//end while opcion menu
-
+		}
+	 }
 	return 0;
-
-};//fin main
+};
