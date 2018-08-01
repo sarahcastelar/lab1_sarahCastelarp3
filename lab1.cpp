@@ -117,15 +117,15 @@ void ejercicio3(){
 	cin >> n;
 	
 	//este for lo unico que hace es sacar la cuenta de cuantos divisores tiene el numero ingresado por el usuario.
-	for(int i = 0; i < n; i++){
+	for(int i = 1; i <= n; i++){
 		if (n%i ==0)
 			contadorDivisores++;		
 	}
 	
-	int *[] arregloDivisores = new int [contadorDivisores];
+	int arregloDivisores [contadorDivisores];
 
 	//este for va ir guardando los divisores en el arreglo anteriormente declarado.
-	for (int i = 0; i < n; i++){
+	for (int i = 1; i <= n; i++){
 		if (n%i == 0){
 			//que lo meta en el arreglo segun la posicion que le corresponde.
 			arregloDivisores[contadorEspacio] = i;
@@ -162,6 +162,7 @@ int main (){
 
 			case 3:
 				//funcion que llama tercer ejercicio
+				ejercicio3();
 			break;
 
 		}//end switch
